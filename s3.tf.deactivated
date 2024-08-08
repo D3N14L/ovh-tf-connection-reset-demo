@@ -1,0 +1,17 @@
+##############
+# S3 Buckets #
+##############
+
+resource "aws_s3_bucket" "buckets" {
+  count = var.bucket_count
+  tags  = { "customer" : var.customer_name }
+
+  bucket        = substr("ccc-gitlab-${count.index}-${sha256(var.customer_name)}", 0, 63)
+  force_destroy = true # Delete objects upon destruction
+  lifecycle {
+    prevent_destroy = false
+    ignore_changes = [
+      bucket
+    ]
+  }
+}
