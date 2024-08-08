@@ -7,7 +7,7 @@
     export OVH_APPLICATION_SECRET=***
     export OVH_CONSUMER_KEY==***
     ```
-iterm
+
 1. Bootstrap Project and s3 user: 
     ```
     terraform apply --var="customer_name=my-dummy-customer";
